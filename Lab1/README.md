@@ -54,6 +54,7 @@
 Для внесения данных из готового набора формата `.csv` использовался следующий скрипт на **Cypher**:
 ```
 LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_filtered.csv' AS line
+WITH line LIMIT 5000
 MERGE (m:Movie {
   titleId: line.titleId, 
   title: line.title,
@@ -68,6 +69,9 @@ MERGE (m:Movie {
   language: line.language,
   types: line.types,
   isOriginalTitle: line.isOriginalTitle})
+MERGE (d:Director {
+  directorId: line.directorId,
+  director: line.director})
 ```
 
 #### Визуализация графа
@@ -83,29 +87,6 @@ MERGE (m:Movie {
 |100|758|590|168|
 
 >Код для выгрузки в neo4j
-
-Датасет
-
-```
-LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_filtered.csv' AS line
-WITH line LIMIT 5000
-MERGE (m:Movie {
-  titleId: line.titleId, 
-  title: line.title,
-  year: line.year,
-  titleType: line.titleType,
-  directorId: line.directorId,
-  director: line.director,
-  isAdult: line.isAdult,
-  runtime: line.runtimeMins,
-  genre: line.genres,
-  avgRating: line.avgRating,
-  numVotes: line.numVotes,
-  region: line.region,
-  language: line.language,
-  types: line.types,
-  isOriginalTitle: line.isOriginalTitle})
-```
 
 Связи
 
@@ -147,31 +128,6 @@ LIMIT 100
 |300|53|247|
 
 >Код для выгрузки в neo4j
-
-Датасет и связи
-
-```
-LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_filtered.csv' AS line
-WITH line LIMIT 5000
-MERGE (m:Movie {
-  titleId: line.titleId, 
-  title: line.title,
-  year: line.year,
-  titleType: line.titleType,
-  isAdult: line.isAdult,
-  runtime: line.runtimeMins,
-  genre: line.genres,
-  avgRating: line.avgRating,
-  numVotes: line.numVotes,
-  region: line.region,
-  language: line.language,
-  types: line.types,
-  isOriginalTitle: line.isOriginalTitle})
-MERGE (d:Director {
-  directorId: line.directorId,
-  director: line.director})
-MERGE (d) -[:Directed {year: line.year}]-> (m)
-```
 
 Запрос
 
