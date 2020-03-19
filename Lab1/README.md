@@ -42,7 +42,7 @@
 
 Датасет `imdb_dataset_filtered.csv`  является основным, т.к. содержит основной набор фильмов, удовлетворяющих следующим критериям: `avgRating` > 7.0, `numVotes` > 100, `runtimeMins` > 60.
 
-Датасет `imdb_dataset_visualise.csv` содержит 20 режиссеров с количеством фильмов от 3 до 6 и используется для визуализации.
+Датасет `imdb_dataset_visualise.csv` содержит 20 режиссеров с количеством фильмов от 3 до 6 и используется для тестовой визуализации.
 
 
 ### Работа с СУБД
@@ -92,7 +92,7 @@ MERGE (d) -[:Directed {year: line.year}]-> (m)
 Датасет
 
 ```
-LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_visualise.csv' AS line
+LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_filtered.csv' AS line
 WITH line LIMIT 5000
 MERGE (m:Movie {
   titleId: line.titleId, 
