@@ -78,3 +78,114 @@ MERGE (d) -[:Directed {year: line.year}]-> (m)
 #### Визуализация графа
 
 Продемонстрируем несколько способов визуализировать датасет в виде графа средствами **neo4j**.
+
+**Граф 1**
+
+**Общая информация**
+
+|Число вершин|Общее число отношений|Отношений SameDirector (зеленые)|Отношений SameYear(фиолетовые)
+|------------|-----------|------------|-----------|
+|100|758|590|168|
+
+**Код для выгрузки в neo4j**
+
+Датасет
+
+```
+LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_visualise.csv' AS line
+WITH line LIMIT 5000
+MERGE (m:Movie {
+  titleId: line.titleId, 
+  title: line.title,
+  year: line.year,
+  titleType: line.titleType,
+  directorId: line.directorId,
+  director: line.director,
+  isAdult: line.isAdult,
+  runtime: line.runtimeMins,
+  genre: line.genres,
+  avgRating: line.avgRating,
+  numVotes: line.numVotes,
+  region: line.region,
+  language: line.language,
+  types: line.types,
+  isOriginalTitle: line.isOriginalTitle})
+```
+
+Связи
+
+```
+MATCH (m1:Movie)
+MATCH (m2:Movie)
+WHERE m1.year = m2.year AND m1.title <> m2.title
+CREATE (m1)-[rel:SameYear]->(m2)
+```
+
+```
+MATCH (m1:Movie)
+MATCH (m2:Movie)
+WHERE m1.directorId = m2.directorId AND m1.title <> m2.title
+CREATE (m1)-[rel:SameDirector]->(m2)
+```
+
+Запрос
+
+```
+MATCH (m:Movie)
+RETURN m
+LIMIT 100
+```
+
+
+**Визуализация**
+
+![vis1](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab1/img/vis1.png)
+
+---
+
+**Граф 2**
+
+**Общая информация**
+
+|Число вершин|Отношений Directed|
+|------------|-----------|
+|300|247|
+
+**Код для выгрузки в neo4j**
+
+Датасет и связи
+
+```
+LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_filtered.csv' AS line
+WITH line LIMIT 5000
+MERGE (m:Movie {
+  titleId: line.titleId, 
+  title: line.title,
+  year: line.year,
+  titleType: line.titleType,
+  isAdult: line.isAdult,
+  runtime: line.runtimeMins,
+  genre: line.genres,
+  avgRating: line.avgRating,
+  numVotes: line.numVotes,
+  region: line.region,
+  language: line.language,
+  types: line.types,
+  isOriginalTitle: line.isOriginalTitle})
+MERGE (d:Director {
+  directorId: line.directorId,
+  director: line.director})
+MERGE (d) -[:Directed {year: line.year}]-> (m)
+```
+
+Запрос
+
+```
+MATCH (n)
+RETURN n
+LIMIT 300
+```
+
+**Визуализация**
+
+![vis2](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab1/img/vis2.png)
