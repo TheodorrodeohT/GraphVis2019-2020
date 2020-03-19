@@ -53,7 +53,7 @@
 
 Для внесения данных из готового набора формата `.csv` использовался следующий скрипт на **Cypher**:
 ```
-LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_visualise.csv' AS line
+LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_filtered.csv' AS line
 WITH line
 MERGE (m:Movie {
   titleId: line.titleId, 
@@ -69,10 +69,6 @@ MERGE (m:Movie {
   language: line.language,
   types: line.types,
   isOriginalTitle: line.isOriginalTitle})
-MERGE (d:Director {
-  directorId: line.directorId,
-  director: line.director})
-MERGE (d) -[:Directed {year: line.year}]-> (m)
 ```
 
 #### Визуализация графа
