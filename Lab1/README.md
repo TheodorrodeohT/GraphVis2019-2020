@@ -11,7 +11,7 @@
 
 ### Сбор данных с помощью библиотеки scrapy
 
-Для начала с сайта была собрана информация, полученная с помощью инструментов библиотеки [scrapy](https://scrapy.org/ "scrapy"). Принцип работы и составления программы (ознакомиться с кодом можно в папке /imdb_crawler) следующий:
+Для начала с сайта была собрана информация, полученная с помощью инструментов библиотеки [scrapy](https://scrapy.org/ "scrapy"). Принцип работы и составления программы (ознакомиться с кодом можно в папке [/imdb_crawler](https://github.com/TheodorrodeohT/GraphVis2019-2020/tree/master/Lab1/imdb_crawler/imdb_crawler "/imdb_crawler")) следующий:
 
 1. В файл [movies.txt](https://github.com/TheodorrodeohT/GraphVis2019-2020/tree/master/Lab1/imdb_crawler/imdb_crawler/spiders/movies.txt "movies.txt") прописываем те фильмы, информацию о которых хотим собрать. В данном случае выбрано 23 фильма нескольких режиссеров.
 2. В файл [settings.py](https://github.com/TheodorrodeohT/GraphVis2019-2020/tree/master/Lab1/imdb_crawler/imdb_crawler/settings.py "settings.py") выставляем задержку между запросами.
