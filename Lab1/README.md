@@ -54,7 +54,6 @@
 Для внесения данных из готового набора формата `.csv` использовался следующий скрипт на **Cypher**:
 ```
 LOAD CSV WITH HEADERS FROM 'file:///imdb_dataset_filtered.csv' AS line
-WITH line
 MERGE (m:Movie {
   titleId: line.titleId, 
   title: line.title,
