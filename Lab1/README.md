@@ -60,6 +60,8 @@ MERGE (m:Movie {
   title: line.title,
   year: line.year,
   titleType: line.titleType,
+  directorId: line.directorId,
+  director: line.director,
   isAdult: line.isAdult,
   runtime: line.runtimeMins,
   genre: line.genres,
