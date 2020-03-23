@@ -41,4 +41,4 @@
 
 #### spring_layout
 
-#### circular_layout
+#### kamada_kawai
