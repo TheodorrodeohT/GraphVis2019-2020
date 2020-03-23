@@ -9,6 +9,8 @@
 
 Лабораторная работа поделена на три основных этапа: вначале составляются три графа, которые будут использоваться при дальнейшей визуализации, затем выполняется имплементация алгоритма spring-electrical layout model, а также реализация собственного алгоритма для визуализации графов, и в конце производится процесс визуализации.
 
+Весь код доступен в jupyter-ноутбуке [GraphVisLab2.ipynb](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab2/GraphVisLab2.ipynb "GraphVisLab2.ipynb").
+
 ### Графы
 
 Для составления графов был использован датасет `imdb_dataset_filtered.csv`, из которого случайным образом было отобрано 10% элементов. Таким образом, получилось 1689 строк. Из него было составлено три основных графа:
@@ -31,9 +33,20 @@
 
 По многим опробованным алгоритмам, кроме **spring_layout** и других похожих, при достаточном количестве вершин и рёбер сложно понять, насколько граф связный. В них рёбра разных компонент связности пересекаются друг с другом, и может создатся ощущение, что есть только одна компонента. Приведённый алгоритм также по сравнению с некоторыми опробованными(например, **spring_layout** или **circular_layout**) для достаточно больших графов лучше показывает как вершины соединены друг с другом. Кроме того, если `diameter = True`, то по графику можно увидеть диаметр каждой компоненты, что может быть полезной информацией. При этом, данный алгоритм не очень хорошо подходит для визуализации графов с большим количеством компонент связности маленького размера.
 
+Визуализация трёх графов выглядит следующим образом при `diameter=False` (изображения [кликабельны](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab2/img "img")):
+
+![distances_layout.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab2/img/distances_layout.png)
+
+А так при `diameter=True`:
+
+![distances_layout_diameter.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab2/img/distances_layout_diameter.png)
+
+
 #### spring_electrical
 
 В методе `spring_electrical(G, k, dim, step, tol, dec)` мы вводим две функции силы, действующие в разные стороны. Функция `Fa` применяется для каждой пары смежных вершин, функция `Fr` применяется для всех остальных. На каждом шаге мы двигаем каждую вершину по направлению ее силы, уменьшая шаг на каждой итерации. Этот цикл повторяется до тех пор, пока система расположения точек не стабилизируется. Одной из характерных особенностей модели **spring-electrical** является то, что вершины, находящиеся ближе к границе, располагаются ближе друг к другу, чем вершины в центре.
+
+![spring_electrical.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab2/img/spring_electrical.png)
 
 ### Алгоритмы (стандартные алгоритмы библиотеки networkx)
 
@@ -41,4 +54,8 @@
 
 #### spring_layout
 
+![spring_networkx.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab2/img/spring_networkx.png)
+
 #### kamada_kawai
+
+![kamada_kawai_networkx.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab2/img/kamada_kawai_networkx.png)
