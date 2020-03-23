@@ -41,6 +41,7 @@
 
 ![distances_layout_diameter.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab2/img/distances_layout_diameter.png)
 
+Также в ноутбуке [distances_test.ipynb](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab2/distances_test.ipynb "distances_test.ipynb") можно ознакомиться с результатами на более мелких графах, которые гораздо проще поддаются интерпретации.
 
 #### spring_electrical
 
