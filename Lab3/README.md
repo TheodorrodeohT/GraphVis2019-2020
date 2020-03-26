@@ -8,6 +8,7 @@
 
 ## 2. Problem statement.
 
+Поиск фильмов и режиссеров в похожих категориях, если не нравится какой-либо конкретный режиссер.
 
 ## 3. Software Requirement Specification.
 
@@ -18,7 +19,10 @@
 
 Чтобы алгоритм был приведен в действие, необходимо:
 
-1. 
+1. Составить граф
+2. Найти для данного режиссера самых "непохожих" на него
+3. Создать новый граф состоящий из фильмов между этими режиссерами
+4. Посмотреть на фильмы других режиссеров
 
 ## 5. Development tools.
 
@@ -48,4 +52,6 @@
 
 Красный цвет - исходная вершина (режиссёр), зелёный - самые дальние вершины (режиссёры), синий - фильмы, жёлтый - остальные режиссёры.
 
-![result.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab3/img/result.png)
+![result2.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab3/img/result2.png)
+
+![result1.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab3/img/result1.png)
