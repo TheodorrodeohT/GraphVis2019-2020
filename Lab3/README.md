@@ -36,3 +36,7 @@
 ## 9. Language.
 
 Русский язык
+
+Результат алгоритма можно визуализировать следующим образом с помощью функции `networkx.drawing.nx_pydot.pydot_layout()`.
+
+![result.png](https://github.com/TheodorrodeohT/GraphVis2019-2020/blob/master/Lab3/img/result.png)
